@@ -3,7 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import NavBar from '../components/NavBar.js'
 import Home from '../components/Home.js'
 import Analytics from '../components/Analytics.js'
-import Budgeting from '../components/Budgeting.js'
+import Friends from '../components/Friends.js'
 import { createBrowserHistory } from 'history'
 
 export default class HomePage extends Component {
@@ -12,7 +12,8 @@ export default class HomePage extends Component {
     this.state={
       firstName: null,
       lastName: null,
-      expenses: []
+      expenses: [],
+      showExpenseForm: false
     }
     this.adapter = adapter
     this.token = token
@@ -30,14 +31,32 @@ export default class HomePage extends Component {
     }
   }
 
+  handleCreateExpense = (expenseObj) => {
+    this.adapter.createExpense(this.token, expenseObj)
+    .then((res) => {
+      if (res.errors == null) {
+        let newExpenses = [...this.state.expenses]
+          newExpenses.push(res)
+        this.setState({
+          expenses: newExpenses,
+          showExpenseForm: false
+        })
+      }
+    })
+  }
+
+  handleAddExpenseButton = (e) => {
+    this.setState({ showExpenseForm: !this.state.showExpenseForm})
+  }
+
   render() {
     return (
       <BrowserRouter>
         <React.Fragment>
         < NavBar />
             <Route exact path="/analytics" render={() => <Analytics expenses={this.state.expenses} />} />
-            <Route exact path="/budgeting" render={() => <Budgeting />} />
-            <Route path="/home" render={() => <Home expenses={this.state.expenses}/>} />
+            <Route exact path="/friends" render={() => <Friends />} />
+            <Route path="/home" render={() => <Home handleCreateExpense={this.handleCreateExpense} adapter={this.adapter} showExpenseForm={this.state.showExpenseForm} expenses={this.state.expenses} token={this.token} userId={this.userId} handleAddExpenseButton={this.handleAddExpenseButton}/>} />
         </React.Fragment>
       </BrowserRouter>
     )

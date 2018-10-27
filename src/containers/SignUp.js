@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import SignUpForm from '../components/SignUpForm'
 
 class SignUp extends Component {
   constructor() {
@@ -13,7 +14,6 @@ class SignUp extends Component {
   }
 
   handleOnChange = (e) => {
-    console.log(this.state)
     this.setState({ [e.target.name]: e.target.value })
   }
 
@@ -24,23 +24,11 @@ class SignUp extends Component {
 
   render() {
       return (
-        <div>
-          <form onSubmit={this.handleOnSubmit}>
-            <label>First Name</label>
-              <input onChange={this.handleOnChange} type='text' name="first_name"></input>
-            <label>Last Name</label>
-              <input onChange={this.handleOnChange} type='text' name="last_name"></input>
-            <label>E-mail</label>
-              <input onChange={this.handleOnChange} type='text' name="email"></input>
-            <label>Username</label>
-              <input onChange={this.handleOnChange} type='text' name="username"></input>
-            <label>Password</label>
-              <input onChange={this.handleOnChange} type='text' name="password"></input>
-            <button type='submit'>Sign Up</button>
-          </form>
-        </div>
+        <SignUpForm handleOnChange={this.handleOnChange} handleOnSubmit={this.handleOnSubmit}/>
       )
     }
+
+
   }
 
 export default SignUp

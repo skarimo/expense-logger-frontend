@@ -3,6 +3,17 @@
   text-align: center;
 }
 
+.column {
+width: 50%;
+position: relative;
+display: inline-block;
+/* width: 6.25%; */
+/* padding-left: 1rem; */
+padding-top: 15%;
+/* padding-right: 1rem; */
+vertical-align: top;
+}
+
 /*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

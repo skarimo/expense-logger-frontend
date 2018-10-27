@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Budgeting = (props) => {
+const Friends = (props) => {
   return (
     <React.Fragment>
-      <h1> Budgeting </h1> 
+      <h1> Friends </h1>
     </React.Fragment>
   )
 }
 
-export default Budgeting
+export default Friends

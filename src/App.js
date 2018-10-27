@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from './containers/Login.js'
 import Adapter from './adapter.js'
+// import 'semantic-ui'
 
 class App extends Component {
 
-
+// https://expense-logger-backend.herokuapp.com/
 
   render() {
 
-    const URL = "https://expense-logger-backend.herokuapp.com/"
+    const URL = "http://10.39.110.49:3000"
     const adapter = new Adapter(URL)
 
     return (

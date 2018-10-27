@@ -11,8 +11,8 @@ const NavBar = (props) => {
         <Link to='/analytics' className="item">
           <i className="pie chart icon"></i> Analytics
         </Link>
-        <Link to='/budgeting' className="item">
-          <i className="tasks icon"></i> Budgeting tool
+        <Link to='/friends' className="item">
+          <i className="tasks icon"></i> Friends
         </Link>
       </div>
     </React.Fragment>
