@@ -37,11 +37,11 @@ class Friends extends Component {
 
   handleAcceptFriendRequest = (friend_id) => {
     this.adapter.acceptFriendRequest(this.token, this.userId, {user_id: this.userId, friend_id: friend_id})
-    .then(res => this.setState({ friends: res.friends, pending: res.pending }))
+    .then(res => this.props.changeFriendAndPendingState(res.friends, res.pending))
   }
 
   handleRejectFriendRequest = (friend_id) => {
-    this.adapter.rejectFriendRequest(this.token, this.userId, {user_id: this.userId, friend_id: friend_id}).then(res => this.setState({ pending: res.pending }))
+    this.adapter.rejectFriendRequest(this.token, this.userId, {user_id: this.userId, friend_id: friend_id}).then(res => this.props.changePendingState(res.pending)
   }
 
   render() {

@@ -22,6 +22,14 @@ export default class HomePage extends Component {
     this.userId = userId
   }
 
+  changeFriendAndPendingState = (newFriends, newPending) => {
+    this.setState({ friends: newFriends, pending: newPending })
+  }
+
+  changePendingState = (newState) => {
+    this.setState({ pending: newState })
+  }
+
   componentDidMount() {
     if (this.userId !== null) {
       this.adapter.getUserData(this.token, this.userId)
@@ -57,7 +65,7 @@ export default class HomePage extends Component {
         <React.Fragment>
         < NavBar />
             <Route exact path="/analytics" render={() => <Analytics expenses={this.state.expenses} />} />
-            <Route exact path="/friends" render={() => <Friends token={this.token} adapter={this.adapter} userId={this.userId} friends={this.state.friends} pending={this.state.pending}/>} />
+            <Route exact path="/friends" render={() => <Friends changeFriendAndPendingState={this.changeFriendAndPendingState} changePendingState={this.changePendingState} token={this.token} adapter={this.adapter} userId={this.userId} friends={this.state.friends} pending={this.state.pending}/>} />
             <Route path="/home" render={() => <Home handleCreateExpense={this.handleCreateExpense} adapter={this.adapter} showExpenseForm={this.state.showExpenseForm} expenses={this.state.expenses} token={this.token} userId={this.userId} handleAddExpenseButton={this.handleAddExpenseButton}/>} />
         </React.Fragment>
       </BrowserRouter>
