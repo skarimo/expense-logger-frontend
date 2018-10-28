@@ -38,7 +38,7 @@ class FriendCard extends Component {
 
   handleOnAddAmountSubmit = () => {
     const bill_share = this.state.user_bill_share[0].id
-    this.adapter.updateBillShares(this.token, this.userId, {bill_share: bill_share,amount_to_add: this.state.amount_to_add})
+    this.adapter.updateBillShares(this.token, this.userId, {bill_share: bill_share,amount_to_add: this.state.amount_to_add.replace(/-/, "")})
     .then(res => this.setState({ user_bill_share: [res], amount_to_add: '' }))
   }
 
@@ -60,7 +60,7 @@ class FriendCard extends Component {
           </div>
           <div className="extra content">
             <div className="ui input" style={{paddingBottom: '2%'}}>
-              <input onChange={this.handleAddAmountChange} value={this.state.amount_to_add} name="amount_to_add" type="number" placeholder="Enter an amount to add"/>
+              <input onChange={this.handleAddAmountChange} value={this.state.amount_to_add} name="amount_to_add" type="number" min="0" placeholder="Enter an amount to add"/>
             </div>
             <div onClick={this.handleOnAddAmountSubmit} className="ui bottom attached button green">
                <i className="add icon"></i>
