@@ -19,7 +19,6 @@ const Analytics = ({ expenses }) => {
     )
   )
 
-  console.log(chartData)
   return (
     <div style={{width:'100%'}}>
       <h3 className="ui block header">Expense Analytics</h3>

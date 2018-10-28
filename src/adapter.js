@@ -47,6 +47,10 @@ export default class Adapter {
     return this.postRequestAfterToken('/api/v1/expenses', token, data)
   }
 
+  addFriendRequest(token,userId, data) {
+    return this.postRequestAfterToken(`/user/${userId}/friend_request`, token, data)
+  }
+
   getUserData(token, userId) {
     return this.getRequest(`/users/${userId}`, token)
   }
@@ -57,6 +61,22 @@ export default class Adapter {
 
   existingTokenCheck(token) {
     return this.getRequest('/test', token)
+  }
+
+  getBillShares(token,userId, data) {
+    return this.postRequestAfterToken(`/user/${userId}/show_bill_shares`, token, data)
+  }
+
+  updateBillShares(token,userId, data) {
+    return this.postRequestAfterToken(`/user/${userId}/update_bill_shares`, token, data)
+  }
+
+  acceptFriendRequest(token,userId, data) {
+    return this.postRequestAfterToken(`/user/${userId}/accept_request`, token, data)
+  }
+
+  rejectFriendRequest(token,userId, data) {
+    return this.postRequestAfterToken(`/user/${userId}/reject_request`, token, data)
   }
 
 }

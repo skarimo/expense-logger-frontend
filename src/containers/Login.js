@@ -24,7 +24,7 @@ export default class Login extends Component {
       this.adapter.existingTokenCheck(token)
       .then((res) => {
         if (res.user) {
-          createBrowserHistory().push('/home')
+          createBrowserHistory().push('/friends')
           this.setState({ authenticated: true, userId: res.user.user_id})
 
         } else {

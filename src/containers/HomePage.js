@@ -13,6 +13,8 @@ export default class HomePage extends Component {
       firstName: null,
       lastName: null,
       expenses: [],
+      friends: [],
+      pending: [],
       showExpenseForm: false
     }
     this.adapter = adapter
@@ -24,7 +26,7 @@ export default class HomePage extends Component {
     if (this.userId !== null) {
       this.adapter.getUserData(this.token, this.userId)
       .then((res) => {
-        this.setState({ firstName: res.first_name, lastName: res.lastName, expenses: res.expenses })
+        this.setState({ firstName: res.first_name, lastName: res.lastName, expenses: res.expenses, friends: res.friends, pending: res.requested_friendships })
       })
     } else {
       createBrowserHistory().push('/')
@@ -55,7 +57,7 @@ export default class HomePage extends Component {
         <React.Fragment>
         < NavBar />
             <Route exact path="/analytics" render={() => <Analytics expenses={this.state.expenses} />} />
-            <Route exact path="/friends" render={() => <Friends />} />
+            <Route exact path="/friends" render={() => <Friends token={this.token} adapter={this.adapter} userId={this.userId} friends={this.state.friends} pending={this.state.pending}/>} />
             <Route path="/home" render={() => <Home handleCreateExpense={this.handleCreateExpense} adapter={this.adapter} showExpenseForm={this.state.showExpenseForm} expenses={this.state.expenses} token={this.token} userId={this.userId} handleAddExpenseButton={this.handleAddExpenseButton}/>} />
         </React.Fragment>
       </BrowserRouter>

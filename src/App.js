@@ -10,7 +10,7 @@ class App extends Component {
 
   render() {
 
-    const URL = "http://10.39.110.49:3000"
+    const URL = "https://expense-logger-backend.herokuapp.com"
     const adapter = new Adapter(URL)
 
     return (
