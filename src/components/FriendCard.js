@@ -14,7 +14,6 @@ class FriendCard extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.friend)
     this.adapter.getBillShares(this.token, this.userId, {"user_id": this.userId, "friend_id": this.props.friend.id})
     .then((res) => {
       let user_bill_share = res.filter(bill_share => bill_share.user_id === this.userId)
