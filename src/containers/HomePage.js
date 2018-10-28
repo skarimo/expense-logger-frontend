@@ -29,7 +29,7 @@ export default class HomePage extends Component {
         this.setState({ firstName: res.first_name, lastName: res.lastName, expenses: res.expenses, friends: res.friends, pending: res.requested_friendships })
       })
     } else {
-      createBrowserHistory().push('/')
+      createBrowserHistory().push('/home')
     }
   }
 
