@@ -41,7 +41,8 @@ class Friends extends Component {
   }
 
   handleRejectFriendRequest = (friend_id) => {
-    this.adapter.rejectFriendRequest(this.token, this.userId, {user_id: this.userId, friend_id: friend_id}).then(res => this.props.changePendingState(res.pending)
+    this.adapter.rejectFriendRequest(this.token, this.userId, {user_id: this.userId, friend_id: friend_id})
+    .then(res => this.props.changePendingState(res.pending))
   }
 
   render() {
