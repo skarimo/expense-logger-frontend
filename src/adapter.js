@@ -43,7 +43,6 @@ export default class Adapter {
   }
 
   createExpense(token, data) {
-    console.log(data)
     return this.postRequestAfterToken('/api/v1/expenses', token, data)
   }
 
