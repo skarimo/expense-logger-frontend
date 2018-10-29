@@ -5,17 +5,17 @@ const Analytics = ({ expenses }) => {
   const spendingList = categorySpending(expenses).map((category) => (
     <tr key={Object.keys(category)}>
     <td>{Object.keys(category)}</td>
-    <td>${Object.values(category)}</td>
+    <td>${parseFloat(Object.values(category)).toFixed(2)}</td>
     </tr>
     )
   )
 
   const categorySum = categorySpending(expenses).reduce(function (accumulator, currentValue) {
-    return accumulator + parseInt(Object.values(currentValue));
+    return accumulator + parseFloat(Object.values(currentValue));
   },0)
 
   const chartData = categorySpending(expenses).map((category) => (
-    [[Object.keys(category)], Object.values(category)/categorySum*100]
+    [[Object.keys(category)], (Object.values(category)/categorySum*100)]
     )
   )
 
@@ -46,7 +46,7 @@ function categorySpending(expenses) {
   let arr = []
   for (var category in grouped) {
     const sum = grouped[category].reduce(function (accumulator, currentValue) {
-      return accumulator + parseInt(currentValue.total_amount);
+      return accumulator + parseFloat(currentValue.total_amount);
     },0)
     arr.push({[category]: sum})
   }
