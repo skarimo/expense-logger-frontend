@@ -43,6 +43,7 @@ export default class HomePage extends Component {
   }
 
   handleCreateExpense = (expenseObj) => {
+    console.log(expenseObj)
     this.adapter.createExpense(this.token, expenseObj)
     .then((res) => {
       if (res.errors == null) {

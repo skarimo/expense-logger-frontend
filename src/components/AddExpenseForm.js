@@ -36,7 +36,7 @@ class AddExpenseForm extends Component {
       <form onSubmit={this.handleOnSubmit} className="ui form">
         <div className="field">
           <label>Total Amount</label>
-          <input onChange={this.handleOnChange} type="number" name="total_amount" placeholder="Total Amount" />
+          <input onChange={this.handleOnChange} type="number" step="0.01" name="total_amount" placeholder="Total Amount" />
         </div>
 
         <div className="field">

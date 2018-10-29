@@ -2,6 +2,7 @@ import React from 'react'
 import AddExpenseForm from './AddExpenseForm'
 
 const Home = ({ expenses, showExpenseForm, handleAddExpenseButton, handleCreateExpense, adapter, token, userId }) => {
+  console.log(expenses)
   const expenseList = expenses.reverse().map((expense) => (
     <tr key={expense.id}>
     <td>{expense.category.name}</td>
