@@ -68,7 +68,7 @@ export default class HomePage extends Component {
           <Switch>
             <Route exact path="/analytics" render={() => <Analytics expenses={this.state.expenses} />} />
             <Route exact path="/friends" render={() => <Friends username={this.state.username} changeFriendAndPendingState={this.changeFriendAndPendingState} changePendingState={this.changePendingState} token={this.token} adapter={this.adapter} userId={this.userId} friends={this.state.friends} pending={this.state.pending}/>} />
-            <Route path="/home" render={() => <Home handleCreateExpense={this.handleCreateExpense} adapter={this.adapter} showExpenseForm={this.state.showExpenseForm} expenses={this.state.expenses} token={this.token} userId={this.userId} handleAddExpenseButton={this.handleAddExpenseButton}/>} />
+            <Route path="/" render={() => <Home handleCreateExpense={this.handleCreateExpense} adapter={this.adapter} showExpenseForm={this.state.showExpenseForm} expenses={this.state.expenses} token={this.token} userId={this.userId} handleAddExpenseButton={this.handleAddExpenseButton}/>} />
           </Switch>
         </React.Fragment>
       </BrowserRouter>
