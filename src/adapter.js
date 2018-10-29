@@ -23,7 +23,9 @@ export default class Adapter {
             "Authorization": `${token}`,
         },
         body: JSON.stringify(data),
-    }).then(res => res.json())
+    }).then((result) => {
+      return result.json()
+    })
   }
 
   getRequest(URL, token) {
