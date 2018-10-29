@@ -29,8 +29,13 @@ class FriendCard extends Component {
     let friendTotal = this.state.friend_bill_share.reduce(function (acc, bill_share) {
       return acc + bill_share.amount;
     }, 0);
-    return (<React.Fragment> Your Spending: ${parseFloat(userTotal)} <h3>${(userTotal - friendTotal).toFixed(2)}</h3> Friends Spending: ${parseFloat(friendTotal)} </React.Fragment>)
-  }
+
+      if (userTotal - friendTotal < 0) {
+        return (<React.Fragment> Your Spending: ${parseFloat(userTotal)} <h3 style={{ color:'red' }}>${(userTotal - friendTotal).toFixed(2)}</h3> Friends Spending: ${parseFloat(friendTotal)} </React.Fragment>)
+      } else {
+        return (<React.Fragment> Your Spending: ${parseFloat(userTotal)} <h3 style={{ color:'green' }}>${(userTotal - friendTotal).toFixed(2)}</h3> Friends Spending: ${parseFloat(friendTotal)} </React.Fragment>)
+      }
+    }
 
   handleAddAmountChange = (e) => {
     this.setState({ [e.target.name]: e.target.value })
