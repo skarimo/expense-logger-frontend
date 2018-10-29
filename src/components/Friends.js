@@ -27,7 +27,6 @@ class Friends extends Component {
   handleAddFriendSubmit = () => {
     this.adapter.addFriendRequest(this.token,this.userId, {username: this.state.friend_username})
     .then((res) => {
-      console.log(res)
       if (res.message === "Success") {
         alert('Request sent')
       } else {
