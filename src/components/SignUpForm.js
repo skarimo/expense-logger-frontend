@@ -14,13 +14,13 @@ const SignUpForm = (props) => {
             <div className="field">
               <div className="ui left icon input">
                 <i className="user outline icon"></i>
-                <input onChange={(e) => {props.handleOnChange(e)}} type="text" name="first_name" placeholder="Fist Name" />
+                <input onChange={(e) => {props.handleOnChange(e)}} type="text" name="first_name" placeholder="First Name" />
               </div>
             </div>
             <div className="field">
               <div className="ui left icon input">
                 <i className="user outline icon"></i>
-                <input onChange={(e) => {props.handleOnChange(e)}} type="text" name="last_name" placeholder="First Name" />
+                <input onChange={(e) => {props.handleOnChange(e)}} type="text" name="last_name" placeholder="Last Name" />
               </div>
             </div>
 
