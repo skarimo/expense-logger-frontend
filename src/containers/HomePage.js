@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NavBar from '../components/NavBar.js'
 import Home from '../components/Home.js'
 import Analytics from '../components/Analytics.js'
@@ -15,6 +15,7 @@ export default class HomePage extends Component {
       expenses: [],
       friends: [],
       pending: [],
+      username: null,
       showExpenseForm: false
     }
     this.adapter = adapter
@@ -34,7 +35,7 @@ export default class HomePage extends Component {
     if (this.userId !== null) {
       this.adapter.getUserData(this.token, this.userId)
       .then((res) => {
-        this.setState({ firstName: res.first_name, lastName: res.lastName, expenses: res.expenses, friends: res.friends, pending: res.requested_friendships })
+        this.setState({ firstName: res.first_name, username: res.username, lastName: res.lastName, expenses: res.expenses, friends: res.friends, pending: res.requested_friendships })
       })
     } else {
       createBrowserHistory().push('/home')
@@ -64,9 +65,11 @@ export default class HomePage extends Component {
       <BrowserRouter>
         <React.Fragment>
         < NavBar />
+          <Switch>
             <Route exact path="/analytics" render={() => <Analytics expenses={this.state.expenses} />} />
-            <Route exact path="/friends" render={() => <Friends changeFriendAndPendingState={this.changeFriendAndPendingState} changePendingState={this.changePendingState} token={this.token} adapter={this.adapter} userId={this.userId} friends={this.state.friends} pending={this.state.pending}/>} />
+            <Route exact path="/friends" render={() => <Friends username={this.state.username} changeFriendAndPendingState={this.changeFriendAndPendingState} changePendingState={this.changePendingState} token={this.token} adapter={this.adapter} userId={this.userId} friends={this.state.friends} pending={this.state.pending}/>} />
             <Route path="/home" render={() => <Home handleCreateExpense={this.handleCreateExpense} adapter={this.adapter} showExpenseForm={this.state.showExpenseForm} expenses={this.state.expenses} token={this.token} userId={this.userId} handleAddExpenseButton={this.handleAddExpenseButton}/>} />
+          </Switch>
         </React.Fragment>
       </BrowserRouter>
     )

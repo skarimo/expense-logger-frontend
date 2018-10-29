@@ -56,7 +56,7 @@ export default class Login extends Component {
   handleSignUp = (newUserInfo, history) => {
     this.adapter.register(newUserInfo).then((res)=>{
       if(res.message === "User created successfully") {
-        history.push('/')
+        history.push('/home')
       } else {
         let errorKeys = Object.keys(res).map((key) => `${key.split("_").join(" ")}: ${res[key]} `)
         alert(errorKeys)

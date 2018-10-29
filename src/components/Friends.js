@@ -27,7 +27,7 @@ class Friends extends Component {
   handleAddFriendSubmit = () => {
     this.adapter.addFriendRequest(this.token,this.userId, {username: this.state.friend_username})
     .then((res) => {
-      if (res.errors == null) {
+      if (res.message === "Success") {
         alert('Request sent')
       } else {
         alert('Invalid username try again: '  + res.errors)
@@ -59,7 +59,7 @@ class Friends extends Component {
     return (
       <div>
         <div style={{width:'100%'}}>
-          <h3 className="ui block header">Friends</h3>
+          <h3 className="ui block header">Friends || Username: {this.props.username} </h3>
         </div>
         <div>
         <div className="ui input">
