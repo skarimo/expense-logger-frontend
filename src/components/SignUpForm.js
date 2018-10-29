@@ -30,16 +30,18 @@ const SignUpForm = (props) => {
                   <input onChange={(e) => {props.handleOnChange(e)}} type="text" name="email" placeholder="E-mail address" />
                 </div>
               </div>
-              <div className="field">
-                <div className="ui left icon input">
-                  <i className="lock icon"></i>
-                  <input onChange={(e) => {props.handleOnChange(e)}} type="password" name="password" placeholder="Password" />
-                </div>
-              </div>
+              
               <div className="field">
                 <div className="ui left icon input">
                   <i className="user icon"></i>
                   <input onChange={(e) => {props.handleOnChange(e)}} type="text" name="username" placeholder="Username" />
+                </div>
+              </div>
+
+              <div className="field">
+                <div className="ui left icon input">
+                  <i className="lock icon"></i>
+                  <input onChange={(e) => {props.handleOnChange(e)}} type="password" name="password" placeholder="Password" />
                 </div>
               </div>
               <button onClick={props.handleOnSubmit} className="ui fluid large green submit button">Sign Up</button>
