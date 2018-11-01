@@ -6,7 +6,7 @@ class AddExpenseForm extends Component {
   constructor({ adapter, token, userId }) {
     super()
     this.state={
-      category_id: 1,
+      category_id: 9,
       user_id: userId,
       total_amount: null,
       date: null,
@@ -30,6 +30,7 @@ class AddExpenseForm extends Component {
   }
 
   render() {
+    console.log(this.state.categories)
     const options = this.state.categories.map(category => (<option key={category.id} value={category.id}>{category.name}</option>))
 
     return (
